@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Infantry.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #8c8c8c; font-style: italic;}
+.s3 { color: #1750eb;}
+.s4 { color: #067d17;}
+.ls0 { height: 1px; border-width: 0; color: #c0c0c0; background-color:#c0c0c0}
+.ln { color: #adadad; font-weight: normal; font-style: normal; }
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Infantry.java</font>
+</center></td></tr></table>
+<pre><a name="l1"><span class="ln">1    </span></a><span class="s0">package </span><span class="s1">ru.itmo.lessons.lesson7_8;</span>
+<a name="l2"><span class="ln">2    </span></a>
+<a name="l3"><span class="ln">3    </span></a><span class="s0">import </span><span class="s1">ru.itmo.lessons.lesson7_8.base.AttackAble;</span>
+<a name="l4"><span class="ln">4    </span></a><span class="s0">import </span><span class="s1">ru.itmo.lessons.lesson7_8.base.BattleUnit;</span>
+<a name="l5"><span class="ln">5    </span></a>
+<a name="l6"><span class="ln">6    </span></a><span class="s2">// 2.23 - аналогично Knight имплементируем интерфейс AttackAble и переопределяем метод</span>
+<a name="l7"><span class="ln">7    </span></a><span class="s2">/* 2.27 - implements AttackAble - переносим в BattleUnit (но почемуто оставляем переопределенный метод!) - &gt; Knight 2.28  */</span>
+<a name="l8"><span class="ln">8    </span></a><span class="s0">public final class </span><span class="s1">Infantry </span><span class="s0">extends </span><span class="s1">BattleUnit </span><span class="s2">/*implements AttackAble */</span><span class="s1">{ </span><span class="s2">// 1.23 - аналогично Knight</span>
+<a name="l9"><span class="ln">9    </span></a>    <span class="s2">// FIXME 2.10 - final свойсва нельзя изменить, значение можно задать только при объявлении или через конструктор, но не в сеттерах и тп -&gt; Unit 2.11</span>
+<a name="l10"><span class="ln">10   </span></a>    <span class="s0">private final int </span><span class="s1">additionalAttack = </span><span class="s3">5</span><span class="s1">;</span>
+<a name="l11"><span class="ln">11   </span></a><hr class="ls0"><a name="l12"><span class="ln">12   </span></a>    <span class="s0">public </span><span class="s1">Infantry(</span><span class="s0">int </span><span class="s1">healthScore, </span><span class="s0">int </span><span class="s1">attackScore) {</span>
+<a name="l13"><span class="ln">13   </span></a>        <span class="s0">super</span><span class="s1">(healthScore, attackScore);</span>
+<a name="l14"><span class="ln">14   </span></a>    <span class="s1">} </span><span class="s2">// 1.24 - аналогично Knight -&gt; King</span>
+<a name="l15"><span class="ln">15   </span></a><hr class="ls0"><a name="l16"><span class="ln">16   </span></a>    <span class="s0">public void </span><span class="s1">infantryVoid(){</span>
+<a name="l17"><span class="ln">17   </span></a>        <span class="s1">System.out.println(</span><span class="s4">&quot;Метод Method infantryVoid&quot;</span><span class="s1">);</span>
+<a name="l18"><span class="ln">18   </span></a>    <span class="s1">} </span><span class="s2">// 1.30 - метод пехотинца, зачем смотри App. пункт 1.28. -&gt; Knight</span>
+<a name="l19"><span class="ln">19   </span></a><hr class="ls0"><a name="l20"><span class="ln">20   </span></a>    <span class="s2">// 2.4 - FIXME При переопределении или при собственной реализации родительского метода имя, ТД и аргумент, как у родитемя, модификатор доступа может быть выше НО НЕ ниже!</span>
+<a name="l21"><span class="ln">21   </span></a>    <span class="s1">@Override </span><span class="s2">// FIXME 2.6 - Возможно использовать анатацию @Override - помогает с написанием метода!</span>
+<a name="l22"><span class="ln">22   </span></a>    <span class="s0">public boolean </span><span class="s1">runFromField() { </span><span class="s2">// FIXME 2.7 - еще о родительским методах, их можно вызвать везде добавив слова super.имяМетода -&gt; Knight</span>
+<a name="l23"><span class="ln">23   </span></a>        <span class="s0">if </span><span class="s1">(</span><span class="s0">super</span><span class="s1">.runFromField()) { </span><span class="s2">// FIXME 2.5 -  полное выполнение инструкций родителя (super.runFromField()) + ниже добавляем то то свое.</span>
+<a name="l24"><span class="ln">24   </span></a>            <span class="s1">attackScore -= </span><span class="s3">3</span><span class="s1">;</span>
+<a name="l25"><span class="ln">25   </span></a>            <span class="s1">System.out.println(</span><span class="s4">&quot;После бегства атака уменьшена на 3&quot;</span><span class="s1">);</span>
+<a name="l26"><span class="ln">26   </span></a>            <span class="s0">return true</span><span class="s1">;</span>
+<a name="l27"><span class="ln">27   </span></a>        <span class="s1">}</span>
+<a name="l28"><span class="ln">28   </span></a>        <span class="s0">return false</span><span class="s1">;</span>
+<a name="l29"><span class="ln">29   </span></a>    <span class="s1">}</span>
+<a name="l30"><span class="ln">30   </span></a><hr class="ls0"><a name="l31"><span class="ln">31   </span></a>    <span class="s2">// 2.14 - аналогично прописываем абстрактный класс -&gt;  App 2.15</span>
+<a name="l32"><span class="ln">32   </span></a>    <span class="s1">@Override</span>
+<a name="l33"><span class="ln">33   </span></a>    <span class="s0">public void </span><span class="s1">rest() {</span>
+<a name="l34"><span class="ln">34   </span></a>        <span class="s1">plusHealth(</span><span class="s3">1</span><span class="s1">);</span>
+<a name="l35"><span class="ln">35   </span></a>        <span class="s1">System.out.println(</span><span class="s4">&quot;Отдых пехотинца&quot;</span><span class="s1">);</span>
+<a name="l36"><span class="ln">36   </span></a>    <span class="s1">}</span>
+<a name="l37"><span class="ln">37   </span></a><hr class="ls0"><a name="l38"><span class="ln">38   </span></a>    <span class="s2">// 2.24 - реализация метода -&gt; App 2.25</span>
+<a name="l39"><span class="ln">39   </span></a>    <span class="s1">@Override</span>
+<a name="l40"><span class="ln">40   </span></a>    <span class="s0">public void </span><span class="s1">attack(BattleUnit enemy) {</span>
+<a name="l41"><span class="ln">41   </span></a>        <span class="s0">if </span><span class="s1">(enemy.isAlive() &amp;&amp; </span><span class="s0">this</span><span class="s1">.isAlive())enemy.minusHealth(attackScore);</span>
+<a name="l42"><span class="ln">42   </span></a>        <span class="s0">if </span><span class="s1">(enemy.isAlive()) </span><span class="s0">this</span><span class="s1">.minusHealth(enemy.getAttackScore());</span>
+<a name="l43"><span class="ln">43   </span></a>        <span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.isAlive()) enemy.minusHealth(additionalAttack);</span>
+<a name="l44"><span class="ln">44   </span></a>    <span class="s1">}</span>
+<a name="l45"><span class="ln">45   </span></a><span class="s1">}</span>
+<a name="l46"><span class="ln">46   </span></a></pre>
+</body>
+</html>

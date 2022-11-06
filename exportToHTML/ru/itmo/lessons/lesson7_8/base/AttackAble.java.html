@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>AttackAble.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #8c8c8c; font-style: italic;}
+.s3 { color: #067d17;}
+.ls0 { height: 1px; border-width: 0; color: #c0c0c0; background-color:#c0c0c0}
+.ln { color: #adadad; font-weight: normal; font-style: normal; }
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+AttackAble.java</font>
+</center></td></tr></table>
+<pre><a name="l1"><span class="ln">1    </span></a><span class="s0">package </span><span class="s1">ru.itmo.lessons.lesson7_8.base;</span>
+<a name="l2"><span class="ln">2    </span></a><span class="s2">// 2.17 - FIXME когда нужен ИНТЕРФЕЙС (методы без реализации или default) - у всех боевых юнитов должен быть метод атаки но реализован для всех по разному. Теоретически можно было бы сделать абстрактный метод в абстрактном классе BattleUnit но нам надо посмотреть интерфейсы, т.к часто бывает, что не все классы в которых необходимо переопределить метод, попадают в расширенный/extends абст.класс BattleUnit)</span>
+<a name="l3"><span class="ln">3    </span></a><span class="s2">// 2.18.1 - FIXME нельзя создать экземпляр интерфейса, не нужен конструктор. Важно, что в аргументе метода передаются только те типы юнитов которые можно атаковать  BattleUnit enemy/ King / Units....</span>
+<a name="l4"><span class="ln">4    </span></a><span class="s0">public interface </span><span class="s1">AttackAble {</span>
+<a name="l5"><span class="ln">5    </span></a>    <span class="s2">/* 2.18.2 - public можно не писать, т.к public по умолчание */ </span><span class="s0">void </span><span class="s1">attack(BattleUnit enemy);</span><hr class="ls0"><a name="l6"><span class="ln">6    </span></a>    <span class="s2">// 2.19 - метод с реализацией, только default</span>
+<a name="l7"><span class="ln">7    </span></a>    <span class="s0">default void </span><span class="s1">someVoid(){</span>
+<a name="l8"><span class="ln">8    </span></a>        <span class="s1">System.out.println(</span><span class="s3">&quot;Метод с реализацией&quot;</span><span class="s1">);</span>
+<a name="l9"><span class="ln">9    </span></a>    <span class="s1">}</span>
+<a name="l10"><span class="ln">10   </span></a>    <span class="s2">// 2.20 - как реализовать метод с реализацией -&gt; Knight 2.21</span>
+<a name="l11"><span class="ln">11   </span></a><span class="s1">}</span>
+<a name="l12"><span class="ln">12   </span></a></pre>
+</body>
+</html>
